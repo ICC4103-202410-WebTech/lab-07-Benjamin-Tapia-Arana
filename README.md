@@ -61,5 +61,5 @@ Post.where(title: 'Post 1')  # There probably isn't a post with the "Post 1" tit
 3. Find all users that have a post with the tag "Tag 1".
 
 ```ruby
-### Code here
+tag_id = Tag.where(name: 'dicta').ids
 ```
