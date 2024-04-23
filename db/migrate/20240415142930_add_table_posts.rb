@@ -6,6 +6,7 @@ class AddTablePosts < ActiveRecord::Migration[7.1]
       t.datetime :published_at #, null: false (hacer validation en el modelo)
       t.integer :answers_count, default: 0 #, null: false  (hacer validation en el modelo)
       t.integer :likes_count, default: 0 #, null: false  (hacer validation en el modelo)
+      t.references :parent_post, foreign_key: {to_table: :posts}
 
       t.timestamps
     end

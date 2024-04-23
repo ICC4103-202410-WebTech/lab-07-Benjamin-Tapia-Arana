@@ -26,12 +26,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_182830) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.datetime "published_at", null: false
+    t.datetime "published_at"
     t.integer "answers_count", default: 0
     t.integer "likes_count", default: 0
+    t.bigint "parent_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.index ["parent_post_id"], name: "index_posts_on_parent_post_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -49,5 +51,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_182830) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "posts", column: "parent_post_id"
   add_foreign_key "posts", "users"
 end
